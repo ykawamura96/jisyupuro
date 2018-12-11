@@ -68,7 +68,7 @@ Internal:
 * 8 MHz
 * 1 MHz
 * 16 MHz (PLL clock,  x5, x61 only)
-* 4 MHz (x313 only)
+* 4 MHz (x313, 43 only)
 * 0.5 MHz (x313 only)
 * 128 kHz 
 
@@ -92,6 +92,11 @@ All available clock options for the selected processor will be shown in the Tool
 **Warning** When using weird clock frequencies (ones with a frequency (in MHz) by which 64 cannot be divided evenly), micros() is 4-5 times slower (~110 clocks) (It reports the time at the point when it was called, not the end, however, and the time it gives is pretty close to reality - w/in 1% or so). This combination of performance and accuracy is the result of hand tuning for these clock speeds. For other clock speeds (for example, if you add your own), it will be slower still - hundreds of clock cycles - though the numbers will be reasonably accurate. Millis() is not effected, only micros() and delay(). 
 
 This differs from the behavior of official Arduino boards - the "stock" micros() executes equally fast at all clock speeds, but returns wrong values with anything that 64 doesn't divide evenly by.
+
+
+Assembler Listing generation  
+------------
+In version 1.2.2 and later, Sketch -> Export compiled binary will generate an assembly listing in the sketch folder. 
 
 Link-time Optimization (LTO) support
 ------------
